@@ -1,0 +1,18 @@
+class Solution:
+    def reverseDLL(self, head):
+        # Edge case: empty list
+        if not head:
+            return None
+        
+        current = head
+        prev_node = None
+
+        while current:
+            # Swap the next and prev pointers
+            current.prev, current.next = current.next, current.prev
+            # Move to the next node in the original list (which is current.prev after swapping)
+            prev_node = current
+            current = current.prev
+        
+        # prev_node will now be the new head of the reversed list
+        return prev_node
